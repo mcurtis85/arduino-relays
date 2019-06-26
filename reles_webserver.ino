@@ -82,52 +82,52 @@ void loop() {
   server.handleClient();
 }
 
-String html = 
-  "<html>"
-    "<head>"
-      "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'/>"
-      "<title>Reles</title>"
-      "<style>"
-        "body{"
-          "text-align: center;"
-          "font-family: sans-serif;"
-          "font-size:12px;"
-          "padding: 25px;"
-        "}"
-
-        "p{"
-          "color:#444;"
-        "}"
-
-        "button{"
-          "outline: none;"
-          "border: 2px solid #1fa3ec;"
-          "border-radius:18px;"
-          "background-color:#FFF;"
-          "color: #1fa3ec;"
-          "padding: 10px 50px;"
-        "}"
-
-        "button:active{"
-          "color: #fff;"
-          "background-color:#1fa3ec;"
-        "}"
-      "</style>"
-    "</head>"
-    "<body>";
-
-for(int i=0; i< qtdReleMAX; i++)
-  {   
-    html +="<p>Tomada "+ String(i+1)  +"</p>"
-      "<p><a href='?pin="+ String(i)  +"&acao=On'><button>ON</button></a></p>"
-      "<p><a href='?pin="+ String(i)  +"&acao=Off'><button>OFF</button></a></p>";
-  }
-     html +="</body>"
-      "</html>";
-
 /* Just a little test message.  Go to http://192.168.4.1 in a web browser
    connected to this access point to see it.
 */
 void handleRoot() {
+  String html = 
+    "<html>"
+      "<head>"
+        "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'/>"
+        "<title>Reles</title>"
+        "<style>"
+          "body{"
+            "text-align: center;"
+            "font-family: sans-serif;"
+            "font-size:12px;"
+            "padding: 25px;"
+          "}"
+
+          "p{"
+            "color:#444;"
+          "}"
+
+          "button{"
+            "outline: none;"
+            "border: 2px solid #1fa3ec;"
+            "border-radius:18px;"
+            "background-color:#FFF;"
+            "color: #1fa3ec;"
+            "padding: 10px 50px;"
+          "}"
+
+          "button:active{"
+            "color: #fff;"
+            "background-color:#1fa3ec;"
+          "}"
+        "</style>"
+      "</head>"
+      "<body>";
+      
+  for(int i = 0; i < qtdReleMAX; i++)
+    {   
+      html =+"<p>Tomada "+ String(i+1)  +"</p>"
+        "<p><a href='?pin="+ String(i)  +"&acao=On'><button>ON</button></a></p>"
+        "<p><a href='?pin="+ String(i)  +"&acao=Off'><button>OFF</button></a></p>";
+    }
+
+  html =+"</body></html>";
+
   server.send(200, "text/html", html);
 }
